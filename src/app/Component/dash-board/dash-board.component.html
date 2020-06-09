@@ -1,0 +1,100 @@
+<div>
+  <mat-toolbar class="docs-navbar-header">
+    <mat-toolbar-row>
+      <div class="page" fxLayout="row">
+        <div class="sideNav">
+          <div>
+            <mat-icon matTooltip="Main menu" (click)="drawer.toggle()">menu</mat-icon>
+          </div>
+          <div class="image">
+            <img src="assets/Fundoo-images/googleKeep.png" class="image">
+          </div>
+          <h1 class="fundoo">Fundoo Note</h1>
+        </div>
+        <div class="searchBar">
+          <mat-card class="searchbar">
+            <button class="searchbutton" (click)="search(val.value)" mat-icon-button>
+              <mat-icon matSuffix>search</mat-icon>
+            </button>
+            <input class="searchinput" type="text" name="search" #val autocomplete="off" placeholder="Search"
+              (keyup.enter)="search(val.value)" #val>
+          </mat-card>
+        </div>
+        <div class="listgrid" fxLayout="row">
+          <div>
+            <button mat-icon-button class="listButton" *ngIf="view" matTooltip="View Grid" (click)="gridView()">
+              <mat-icon>view_module</mat-icon>
+            </button>
+            <button mat-icon-button class="gridButton" *ngIf="!view" matTooltip="List View" (click)="gridView()">
+              <mat-icon>view_agenda</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div>
+          <img class="picture propic" alt="ProfilePicture" *ngIf="!profilePic" matTooltip="{{firstName}} {{email}}" src="/assets/Fundoo-images/user.svg"
+            [matMenuTriggerFor]="menu">
+          <img class="picture" alt="ProfilePicture" *ngIf="profilePic" src="{{profilePicture}}"
+            [matMenuTriggerFor]="menu">
+        </div>
+        <mat-menu #menu="matMenu" (click)="$event.stopPropagation();">
+          <div class="photo" (click)="$event.stopPropagation();">
+            <img class="pic" alt="Profile Picture" *ngIf="!profilePic" matTooltip="Profile" src="/assets/Fundoo-images/user.svg">
+            <img class="pic" alt="Profile Picture" *ngIf="profilePic" src="{{profilePicture}}">
+          </div>
+          <div class="changePic">
+            <!-- <mat-icon mat-icon-button (click)="ChangeProfile()" class="photoedit">photo_camera</mat-icon> -->
+            <button mat-raised-button (click)="ChangeProfile()" class="photoedit cameraimg"><img src="../../../assets/camera_alt-24px.svg"></button>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="addpersondiv">
+            <button mat-button class="add">
+              <div class="collab">
+                <a class="addperson">
+                  <mat-icon class="addicon">person_add</mat-icon>
+                  <span class="addAcount">Add Account</span>
+                </a>
+              </div>
+            </button>
+          </div>
+          <div class="signoutclass">
+            <button mat-button class="signout" (click)="logout()">Sign Out</button>
+          </div>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<div class="sidenavdiv">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+      <mat-nav-list class="list">
+        <a mat-list-item class="notes" (click)="notes()">
+          <mat-icon>emoji_objects</mat-icon>Notes
+        </a> <br>
+        <a mat-list-item class="notes" (click)="reminder()">
+          <mat-icon>notifications</mat-icon>Reminders
+        </a><br>
+        <div *ngFor="let lab of allLabels">
+          <a mat-list-item matTooltip={{lab.labelName}} (click)="labelOperation(lab.labelName)">
+            <mat-icon>label_outline</mat-icon><a class="margin">{{lab.labelName}}</a>
+          </a> <br>
+        </div>
+        <div>
+          <a mat-list-item class="notes" (click)="openDialog(allLabels)">
+            <mat-icon>create</mat-icon>Edit Labels
+          </a>
+        </div>
+        <br>
+        <a mat-list-item class="notes" (click)="archive()">
+          <mat-icon>archive</mat-icon>Archive
+        </a> <br>
+        <a mat-list-item class="notes" (click)="trash()">
+          <mat-icon>delete</mat-icon>Trash
+        </a> <br>
+      </mat-nav-list>
+    </mat-drawer>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
+</div>

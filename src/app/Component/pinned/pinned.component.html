@@ -1,0 +1,9 @@
+<div class="display">
+    <button class="pin"id="pin" *ngIf="notes.pin && !notes.trash" mat-icon-button matTooltip="UnPin" (click)="unpin(notes.id)">
+        <img style="border: none; width: 150%;" src="assets/pin.svg" height="65%">
+    </button>
+
+    <button class="pin" id="unpin" *ngIf="!notes.pin && !notes.trash" mat-icon-button matTooltip="Pin" (click)="pin(notes.id)">
+        <img style="border: none; width: 150%; " class="unpin" src="assets/unpin.svg" height="65%">
+    </button>
+</div>

@@ -1,0 +1,38 @@
+<div mat-dialog-content class="editbody" class="card">
+    <mat-card (click)="$event.stopPropagation();">
+        <mat-card-content>
+            <h4>Edit Labels</h4>
+            <div fxLayout="column">
+                <div fxLayout="row" class="div">
+                    <mat-icon class="cancel icon" matTooltip="Cancel">close</mat-icon>
+                    <input matInput class="label"
+                        style="border: none; outline: none;background-color: none; width:3cm;height:0.7cm"
+                        placeholder="Enter label name" matInput [(ngModel)]="nameLabel"> <br>
+                    <button mat-button class="check" matTooltip="create" mat-dialog-close
+                        (click)="createLabels(nameLabel)">
+                        <mat-icon>check</mat-icon>
+                    </button>
+                </div>
+
+
+                <label *ngFor="let lab of data.labels" fxLayout="coloum">
+                    <div fxLayout="row" >
+                        <button mat-button matTooltip="Delete label"  (click)="deleteLabel(lab.labelId)" class="width">
+                            <mat-icon  class="icon" mat-dialog-close> delete
+                            </mat-icon>
+                        </button>
+                        <input style="border: none; outline: none; background-color: whitesmoke;width:3cm;" *ngIf="edit"
+                            value="{{lab.labelName}}" >
+                        <a *ngIf="!edit" style="width:3cm" class="input"> {{lab.labelName}}</a>
+                        <button mat-button matTooltip="Rename Label" class="height">
+                            <mat-icon >edit</mat-icon>
+                        </button>
+                    </div>
+                    <br>
+                </label>
+            </div>
+        </mat-card-content>
+        <mat-divider class="divider"></mat-divider>
+        <button mat-button mat-dialog-close class="done">Done</button>
+    </mat-card>
+</div>

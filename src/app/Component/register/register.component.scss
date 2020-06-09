@@ -1,0 +1,71 @@
+.registration-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .registration-full-width {
+    width: 100%;
+  }
+  h1{
+      color: darkslategray;
+      padding-top: 2%;
+  }
+  .card
+  {
+    // margin-top: 2%;
+    // margin-left: 25%;
+    // margin-right: 20%;
+    margin: auto;
+    align-items: center;
+    width: 45%;
+    height: 77%;
+    align-content: center;
+    background-color: whitesmoke;
+    box-shadow: 5px 4px 7px rgba(141, 124, 124, 0.3)
+  }
+  .subtitle
+  {
+      color: darkslategray;
+      align-items: center;
+      align-content: center;
+      align-self: center;
+  }
+  .facebook {
+    background-color: blue;
+   color: white;
+   align-items: center;
+   margin: 0 25px;
+   margin-top: 7px;
+   cursor: pointer;
+}
+.gmail {
+  text-align: right;
+  background-color: crimson;
+  color: white;
+  margin: 0 25px;
+  margin-top: 7px;
+  cursor: pointer;
+  //border-style: ridge;
+}
+ 
+  .dis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .input_field-section--main{
+    width: 69%;
+    margin: auto;
+  }
+  .w-100{
+    width:80%;
+  }
+  .mr-10{
+    margin-right: 10px;
+  }
+  .w-80{
+    width: 80%;
+  }
+  .register_btn{
+    margin-bottom: 10px;
+  }

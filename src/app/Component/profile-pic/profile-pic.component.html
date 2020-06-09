@@ -1,0 +1,46 @@
+<mat-dialog-content class="container">
+  <div fxLayout="column">
+    <div fxLayout="column" class="maindiv">
+      <div class="profilecard" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+        <div><span class="dialogtitle">Select profile photo</span></div>
+        <div class="close-btn">
+          <button mat-icon-button mat-dialog-close matTooltip="cancel">
+            <img class="close-img" src="../../../assets/close-24px.svg">
+          </button>
+        </div>
+      </div>
+
+
+      <div fxLayoutAlign="center center" class="add-img-btn">
+        <label fxLayout="column">
+          <input type="file" id="selectedFile" (change)="onSelectedFile($event)" style="display: none;" />
+          <div *ngIf="flag == false" fxFlex="30" fxLayoutAlign="center center" class="tooltip" (click)="changeFlag()">
+            <img class="addimage" src='../../../assets/photo_library-24px.svg'>
+            <!-- <span class="tooltiptext">Update profile pic</span> -->
+          </div>
+          <div class="drag">Drag a profile photo here</div>
+          <div class="ordiv">- or -</div>
+          <button *ngIf="flag == false" class="selectphototext">Select a photo from your computer</button>
+        </label>
+      </div>
+      <image-cropper *ngIf="flag == true" [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)">
+      </image-cropper>
+    </div>
+    <div fxFlex="100" class="footer">
+      <mat-divider></mat-divider>
+      <div fxLayout="row" class="footer-btns">
+        <button mat-dialog-close mat-button class="setprofilebutton setbutton" (click)="addImage(croppedImage)">Set as profile
+          photo</button>
+        <button mat-dialog-close mat-button class="cancelbtn setbutton">Cancel</button>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<!-- <div mat-dialog-content class="editbody" class="card">
+    <mat-card >
+        <mat-card-content>
+            <h4>Edit Labels</h4>
+        </mat-card-content>
+        <mat-divider class="divider"></mat-divider>
+    </mat-card>
+</div> -->

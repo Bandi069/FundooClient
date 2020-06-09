@@ -1,0 +1,40 @@
+<mat-card class="matcard" [ngStyle]="{'background-color':note.changeColor}">
+        <div  fxLayout="row" class="space" >
+            <div style="padding: 0px;" (click)="OnClicktoUpdate(note)" id="title">
+                {{note.title}}
+            </div>
+            <app-pinned *ngIf="!notes.trash" [notes]="note" (output)="getOutput($event)"></app-pinned>
+        </div>
+    <div class="noteDisplay">
+        <div (click)="OnClicktoUpdate(note)" id="description">
+            {{note.description}}
+        </div>
+    </div>
+    <div *ngFor="let label of labels">
+        <div *ngIf="label.noteId == note.id">
+            <mat-chip-list>
+                <mat-chip class="mar"> {{label.labelName}}
+                    <button matTooltip="Delete Label" [ngStyle]="{'background-color' : note.changeColor}"
+                        class="labelCancelVisibilty" style="border: none;outline: none;">
+                        <mat-icon (click)="deleteLabel(label.labelId)" class="Cbutton">close</mat-icon>
+                    </button>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+    <div *ngIf="note.reminder!=null&&note.reminder!=''">
+        <div>
+            <mat-chip-list>
+                <mat-chip class="mar">{{note.reminder}}
+                    <button matTooltip="Delete Reminder" [ngStyle]="{'background-color' : note.changeColor}"
+                        class="labelCancelVisibilty" style="border: none;outline: none;">
+                        <mat-icon (click)="deleteReminder(note.id)" class="Cbutton">close</mat-icon>
+                    </button>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+    <mat-card-footer>
+        <app-icons [notes]="note" (output)="getOutput($event)" class="icons"></app-icons>
+    </mat-card-footer>
+</mat-card>

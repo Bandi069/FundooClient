@@ -1,0 +1,25 @@
+<mat-card [ngStyle]="{'background-color' : data.note.color}" class="mat">
+
+    <div fxLayout="row" class="update">
+        <div>
+            <input style="border: none; outline: none;font-size:x-large ;"
+                [ngStyle]="{'background-color' : data.note.color}" matInput type="text" class="ntitle"
+                value="{{data.note.title}}" #title>
+        </div>
+            <app-pinned [notes]="data.note"></app-pinned>
+    </div>
+
+    <div>
+        <i> <input style="border: none; outline: none;font-size: medium;"
+                [ngStyle]="{'background-color' : data.note.color}" matInput type="text" class="titles"
+                value="{{data.note.description}}" #description> </i>
+
+        <div fxLayout="row" style="padding-top: 32px;" class="icon">
+            <div>
+                <app-icons [notes]="data.note" (output)="outputFunction($event)"></app-icons>
+            </div>
+            <button mat-button mat-dialog-close (click)="updateNote(title.value, description.value, data.note.id)"
+                id="update">Close</button>
+        </div>
+    </div>
+</mat-card>

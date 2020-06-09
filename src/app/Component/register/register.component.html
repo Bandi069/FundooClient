@@ -1,0 +1,71 @@
+<div class="card" >
+    <h1>FUNDOO </h1>
+    <div>
+        <div>
+            <mat-card-title-group>
+                <mat-card-title class="subtitle">
+                    Create your new Fundoo Account
+                </mat-card-title>
+            </mat-card-title-group>
+            <br>
+        </div>
+        <!-- input fields section -->
+        <div class="input_field-section--main">
+            <div class="d-flex w-100">
+                <div class="w-100 mr-10">
+                    <mat-form-field class="registration-full-width" appearance="outline">
+                        <mat-label class="labelColor">First Name</mat-label>
+                        <input matInput [formControl]="firstName" placeholder="First Name" required>
+                        <mat-error *ngIf="firstName.hasError('required')">Enter First name</mat-error>
+                        <mat-error *ngIf="firstName.hasError('minlength')">Minimum 4 Characters
+                        </mat-error>
+                        <mat-error *ngIf="firstName.hasError('pattern') && !firstName.hasError('minlength')">
+                            Enter Correct Name</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="w-100">
+                    <mat-form-field class="registration-full-width" appearance="outline">
+                        <mat-label class="labelColor">Last Name</mat-label>
+                        <input matInput [formControl]="lastName" placeholder="Last Name" required>
+                        <mat-error *ngIf="lastName.hasError('required')">Enter Last name</mat-error>
+                        <mat-error *ngIf="lastName.hasError('minlength')">Minimum 4 Characters
+                        </mat-error>
+                        <mat-error *ngIf="lastName.hasError('pattern') && !firstName.hasError('minlength')">
+                            Enter Correct Name</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <mat-form-field class="registration-full-width " appearance="outline">
+                    <mat-label class="labelColor">Email</mat-label>
+                    <input matInput [formControl]="email" placeholder="Email" required>
+                    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">Sorry,Invalid email
+                    </mat-error>
+                    <mat-error *ngIf="email.hasError('required')">Email is Required</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="registration-full-width " appearance="outline">
+                    <mat-label class="labelColor">Password</mat-label>
+                    <input matInput [formControl]="password" placeholder="" type="password" required>
+                    <mat-error *ngIf="password.hasError('required')">Enter a password</mat-error>
+                    <mat-error *ngIf="password.hasError('minlength')"> Use 8 characters or more for your password
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="button">
+                <button mat-raised-button type="button" color="primary" (click)="registrationForm()"
+                    class="register_btn" id="register">Register</button>
+            </div>
+            <div class="disp">
+                <span>Already Have an account? <a href="login">Login</a></span>
+            </div>
+            <br>
+            <div>
+                    <mat-button class="facebook" color="primary">Facebook</mat-button>
+                    <mat-button class="gmail" color="primary">Gmail</mat-button>
+            </div>
+        </div>
+        <!-- input fields section End-->
+    </div>
+</div>

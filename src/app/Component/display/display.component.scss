@@ -1,0 +1,64 @@
+.col {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    margin-left: 0.5cm;
+    margin-bottom: auto;
+    height: auto;
+    margin-top: auto;
+  }
+  .mat-card
+  {
+    border-width: 2px 3px 3px 6px;
+    box-shadow: -1px 1px 8px #867f7e;
+  }
+  .grid
+  {
+    margin-left: 111px;
+  }
+  .colu{
+  width: 50%;
+  margin-bottom: 17px;
+  height: auto;
+    margin-left: 6cm;
+    min-width:50%;
+}
+  .btn
+  {
+    margin-top: 2px;
+  }
+  .bin
+  {
+    justify-content: center;
+    align-items: center;
+   
+  }
+  .notedelete{
+    font-style: italic;
+  }
+  .emptytrash{
+    color: blue;
+  }
+  .row{
+    margin-top: auto;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .pinned{
+    font-weight: 500;
+    font-family: Roboto,Arial,sans-serif;
+  }
+  .create
+  {
+    width: 100%;
+    margin: auto;
+  //  max-width: 500px;
+   // margin-bottom: 1cm;
+    //flex-wrap: wrap;
+  }

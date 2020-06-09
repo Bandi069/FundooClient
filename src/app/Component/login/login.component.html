@@ -1,0 +1,43 @@
+<div class="card" align="center">
+    <h1>FUNDOO NOTE</h1>
+    <div>
+        <div>
+            <mat-card-title-group>
+                <mat-card-title class="subtitle">
+                   Fundoo Account Sign in
+                </mat-card-title>
+            </mat-card-title-group>
+            <br>
+        </div>
+        <!-- input fields section -->
+        <div class="input_field-section--main">
+            <div class="w-80">
+                <div>
+                    <mat-form-field class="login-full-width" appearance="outline">
+                        <mat-label class="labelColor">Email</mat-label>
+                        <input matInput [formControl]="email" placeholder="Email">
+                        <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">Sorry,Invalid email
+                        </mat-error>
+                        <mat-error *ngIf="email.hasError('required')">Email is Required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="login-full-width" appearance="outline">
+                        <mat-label class="labelColor">Password</mat-label>
+                        <input matInput [formControl]="password" placeholder="" type="password">
+                        <mat-error *ngIf="password.hasError('required')">Enter a password</mat-error>
+                        <mat-error *ngIf="password.hasError('minlength')"> Use 8 characters or more for your password
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="button">
+                    <button mat-raised-button type="button" id="Login" color="primary" class="login_btn" (click)="loginForm()">login</button>
+                </div>
+            </div>
+            <!-- input fields section End-->
+        </div>
+        <div class="forgot" routerLink="/forgotPassword"><a href="forgotPassword">Forgot Password?</a></div>
+        <br>
+        <div class="newaccount" routerLink="/register">Don't Have Account? <a href="register">Register</a></div>
+    </div>
+</div>

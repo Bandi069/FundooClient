@@ -1,0 +1,125 @@
+// .mat-dialog-content {
+//     display: block;
+   
+//     border-radius: 4px;
+//     box-sizing: border-box;
+//     overflow: auto;
+//     outline: 0;
+//     min-height: inherit;
+//     max-height: inherit;
+// }
+.container {
+    width: 700px;
+    // margin-left: 37px;
+    // margin-top: 10px;
+    height: 200px;
+    padding: 15px 15px 0;
+}
+.collabdiv {
+    padding: 15px 15px 0;
+    padding: 15px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 18px;
+    font-weight: 550;
+    height: 25px;
+    padding: 0 0 10px 0;
+    font-family: "Roboto", arial, sans-serif;
+    // height: 250px;
+    //width: 500px;
+}
+.placehold {
+    display: inline-flex;
+}
+
+.collabname {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 18px;
+    font-weight: 500;
+    height: 25px;
+    padding: 0 0 10px 0;
+}
+.ownerdetails {
+    box-sizing: border-box;
+    left: 0;
+    max-height: 400px;
+    //min-height: 150px;
+    overflow-y: auto;
+}
+.divclass {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+.names {
+    font-weight: 700;
+}
+.addperson {
+    background-size: 18px 24px;
+    height: 100%;
+    opacity: 0.5;
+    width: 100%;
+}
+.owner {
+    font-style: italic;
+    margin-left: 5px;
+}
+.usermail {
+    color: #5f6368;
+    direction: ltr;
+    font-family: "Roboto", arial, sans-serif;
+}
+.newcollab {
+    flex: 1 0 auto;
+    margin: 0 13px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    color: #3c4043;
+    font-size: 13px;
+    font-family: "Roboto", arial, sans-serif;
+    height: 25px;
+    padding: 0;
+}
+.inlinediv {
+    position: relative;
+    align-items: center;
+    // display: flex;
+    padding: 5px;
+    display: inline-flex;
+}
+.cancelsave {
+    background-color: rgba(0, 0, 0, 0.07);
+    justify-content: flex-end;
+    padding: 4px 10px;
+    border-radius: 5px;
+ //   margin-top: 5%;
+    margin-top: 125px;
+}
+.cancel {
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.87);
+    overflow: hidden;
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    font-weight: 500;
+    height: 36px;
+    //padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 500px;
+}
+.save {
+    // margin-left: 19%;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.87);
+    overflow: hidden;
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    font-weight: 500;
+    height: 36px;
+    //   padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 8px;
+}

@@ -1,0 +1,114 @@
+<div *ngIf="param=='notes'" class="align">
+    <div>
+        <app-create-note (output)="getOutput($event)"></app-create-note>
+    </div>
+    <div *ngIf="gridView=='row'" style="padding-left: 200px;">
+        <span class="pinned">PINNED</span>
+    </div>
+    <div *ngIf="gridView=='column'" class="grid" style="padding-left: 200px;">
+        <span class="pinned">PINNED</span>
+    </div>
+
+    <div class="row" style="margin-left: 10%;">
+        <div class="test">
+            <div *ngFor="let notes of allNotes">
+                <div *ngIf="!notes.archive && !notes.trash && notes.pin==1">
+                    <app-notes [note]="notes" *ngIf="gridView=='row'" class="col" [labels]="allLabels"
+                        (output)="getOutput($event)"></app-notes>
+                    <div class="colu">
+                        <app-notes [note]="notes" *ngIf="gridView=='column'" [labels]="allLabels"
+                            (output)="getOutput($event)"></app-notes>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="gridView=='row'">
+        <span class="pinned" style="padding-left: 200px;">OTHERS</span>
+    </div>
+    <div *ngIf="gridView=='column'" class="grid" style="padding-left: 200px;">
+        <span class="pinned">OTHERS</span>
+    </div>
+    <div class="row" style="margin-left: 10%;">
+        <div *ngFor="let notes of allNotes">
+            <div *ngIf="!notes.archive && !notes.trash && notes.pin==0">
+                <app-notes [note]="notes" *ngIf="gridView=='row'" class="col" [labels]="allLabels"
+                    (output)="getOutput($event)"></app-notes>
+                <div class="colu">
+                    <app-notes [note]="notes" *ngIf="gridView=='column'" [labels]="allLabels"
+                        (output)="getOutput($event)"></app-notes>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="param=='reminder'" class="align">
+    <div class="create">
+        <app-create-note (output)="getOutput($event)"></app-create-note>
+    </div>
+    <div class="row" style="margin-left: 10%;">
+        <div *ngFor="let notes of allNotes">
+            <div *ngIf="!notes.archive && !notes.trash && notes.reminder">
+                <app-notes [note]="notes" *ngIf="gridView=='row'" class="col" [labels]="allLabels"
+                    (output)="getOutput($event)"></app-notes>
+                <div class="colu">
+                    <app-notes [note]="notes" *ngIf="gridView=='column'" [labels]="allLabels"
+                        (output)="getOutput($event)"></app-notes>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="param=='archive'" class="align">
+    <div class="row" style="margin-left: 10%;">
+        <div *ngIf="allNotes.length==0">
+            <div class="emptyarchive">
+                <img class="archiveimg" src="../../../assets/Fundoo-images/archive-24px.svg">
+                <div class="emptyarchivetext">Your archived notes appeared here</div>
+            </div>
+        </div>
+        <div *ngFor="let notes of allNotes">
+            <div *ngIf="allNotes.length>0 && notes.archive && !notes.trash  ">
+                <app-notes [note]="notes" *ngIf="gridView=='row'" class="col" [labels]="allLabels"
+                    (output)="getOutput($event)"></app-notes>
+                <div class="colu">
+                    <app-notes [note]="notes" *ngIf="gridView=='column'" [labels]="allLabels"
+                        (output)="getOutput($event)">
+                    </app-notes>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="param=='trash'" class="align">
+
+    <div *ngIf="!bin" fxLayout="row" class="bin notedelete">Notes in Trash are deleted after 7 days
+        <button mat-button (click)="emptyBin()" class="btn emptytrash" (output)="getOutput($event)">Empty Trash</button>
+    </div>
+    <div *ngIf="allNotes.length==0;else noteapp">
+        <div class="emptytrashdiv">
+            <img class="trashimg" src="../../../assets/Fundoo-images/delete-24px.svg">
+            <div class="emptytrashtext">No notes in Trash</div>
+        </div>
+    </div>
+    <!-- <ng-template #noteapp> -->
+        <div class="row" style="margin-left: 10%;">
+            <div *ngFor="let notes of allNotes">
+                <div *ngIf="notes.trash">
+                    <app-notes [note]="notes" *ngIf="gridView=='row'" class="col" [labels]="allLabels"
+                        (output)="getOutput($event)"></app-notes>
+                    <div class="colu">
+                        <app-notes [note]="notes" *ngIf="gridView=='column'" [labels]="allLabels"
+                            (output)="getOutput($event)"></app-notes>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </ng-template> -->
+</div>

@@ -1,0 +1,77 @@
+.noteDisplay{
+    min-height: 30px;
+    font-size: 15px;
+    width: 40px;
+}
+.notesDisplay
+{
+    font-size: 20px;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0px 3px 2px rgba(0,0,0,.2), 0 6px 1px 0 rgba(0,0,0,.14), 0 4px 3px 0 rgba(0,0,0,.12);
+}
+.space
+{
+    justify-content: space-between;
+}
+.test
+{
+    width: 100%;
+    display: flex;
+    flex: 1 1 50%;
+    flex-wrap: wrap;
+}
+.mar
+{
+    margin-left: 0mm;
+    pointer-events: auto;
+    font-size: 15px;
+    background: transparent;
+}
+.Cbutton
+{
+    margin-top: 6px;
+    margin-left: 6px;
+    margin-right: -12px;
+}
+.mat-chip-list-wrapper .mat-standard-chip, .mat-chip-list-wrapper input.mat-input-element {
+    margin: 4px;
+    height: auto;
+    padding: 2px;
+}
+.mar:hover{
+    .labelCancelVisibilty{
+        visibility: visible;
+    }
+}
+// .icons
+// {
+//     visibility: hidden;
+// }
+.icons:hover
+{
+    visibility: visible;
+}
+.labelCancelVisibilty
+{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+.mat-icon
+{
+    font-size:20px
+}
+.labelVisibility{
+    border: none;
+    outline: none;
+    height: 0.9cm;
+    width: auto -10%;
+    margin-left: 0.2cm;
+    border-radius: 20px;
+    margin: 5px;
+    opacity: 60%;
+}
+.labelCancelVisibilty{
+    visibility: hidden;
+}

@@ -1,0 +1,57 @@
+.pickDate
+{
+    margin-left: 5px;
+    margin-top: -3px;
+}
+.icons
+{
+    justify-content: space-around;
+    opacity: 0.9;
+}
+.icons-style
+{
+    background-color: #fff;
+    opacity: 0;
+    padding: 5px 7px 3px;
+    position: absolute;
+    visibility: hidden;
+    width: 136px;
+    z-index: 4011;
+}
+.mat-mini-fab
+{
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+}
+.icon-shadow
+{
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 8px;
+}
+.delete
+{
+    //margin-left: 18px;
+    justify-content: start;
+    background: transparent;
+}
+.mat-menu-item .mat-icon {
+    margin-right: 0px;
+    vertical-align: middle;
+}
+.mr
+{
+    padding-bottom: 2px;
+}
+.trash{
+    opacity: 1.61;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.colorPalette {
+    padding: 6px;
+}

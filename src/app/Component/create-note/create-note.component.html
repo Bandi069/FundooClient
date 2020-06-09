@@ -1,0 +1,160 @@
+<div class="note d-flex">
+    <mat-card (click)="open()" *ngIf="!popup" class="closedmatcard">
+        <input matInput id="closeCard" class="searchbar" placeholder="Take a note...">
+        <button mat-icon-button class="closedmaticons" matTooltip="New list">
+            <mat-icon>check_box</mat-icon>
+        </button>
+        <button mat-icon-button class="closedmaticons" matTooltip="New note with drawing">
+            <mat-icon>brush</mat-icon>
+        </button>
+        <button mat-icon-button class="closedmaticons" matTooltip="New note with image">
+            <mat-icon>image</mat-icon>
+        </button>
+    </mat-card>
+    <div>
+        <mat-card *ngIf="popup" class="openedmatcard" [ngStyle]="{'background-color':noteColor}">
+            <div fxLayout="row" class="space">
+                <div style="display: flex;flex-direction: row;align-items: center;">
+                    <input type="text" placeholder="Title" id="titleId" class="input" value=""
+                        [ngStyle]="{'background-color':noteColor}" #title>
+                </div>
+                <button class="pin" *ngIf="pin; else unpin" mat-icon-button matTooltip="UnPin" (click)="isPin()">
+                    <img style="border: none; width: 150%;" src="assets/pin.svg" height="65%">
+                </button>
+                <ng-template #unpin>
+                    <button class="pin" mat-icon-button matTooltip="Pin" (click)="isPin()">
+                        <img style="border: none; width: 150%; " src="assets/unpin.svg" height="65%">
+                    </button>
+                </ng-template>
+            </div>
+            <div>
+                <input type="text" id="takeAnote" placeholder="Take a note..." class="input" value=""
+                    [ngStyle]="{'background-color':noteColor}" #description>
+            </div>
+
+            <div>
+                <mat-chip *ngIf="reminder!=null" class="mar" [ngStyle]="{'background-color':noteColor}">
+                    {{reminder}}
+                    <mat-icon matTooltip="Delete Reminder" class="Cbutton" (click)="close()">close</mat-icon>
+                </mat-chip>
+
+                <mat-chip *ngIf="label!=null" [ngStyle]="{'background-color':noteColor}">
+                    {{label}}
+                    <mat-icon (click)="closelabel()" class="labelClose">close</mat-icon>
+                </mat-chip>
+
+            </div>
+            <div class="labelVisibility">
+                <div>
+                    <div fxlayout="row" class="display">
+                        <button mat-icon-button matTooltip="Remind Me" [matMenuTriggerFor]="remind" class="remind">
+                            <mat-icon>add_alert</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="collaborator" (click)="openCollabDialog(data)" class="remind">
+                            <mat-icon>person_add</mat-icon>
+                        </button>
+
+                        <button mat-icon-button matTooltip="Add Color" class="remind colors" id="colorPalette"
+                            [matMenuTriggerFor]="Colors">
+                            <mat-icon>palette
+                            </mat-icon>
+                        </button>
+                        <div>
+                            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+                            <button mat-icon-button matTooltip="Add image" (click)="fileInput.click()"
+                                class="remind mrl">
+                                <mat-icon>image</mat-icon>
+                            </button>
+                        </div>
+                        <button mat-icon-button *ngIf="archive; else showarchive" (click)="isArchive()"
+                            matTooltip="UnArchive">
+                            <mat-icon>unarchive</mat-icon>
+                        </button>
+                        <ng-template #showarchive>
+                            <button mat-icon-button (click)="isArchive()" matTooltip="Archive">
+                                <mat-icon>
+                                    archive
+                                </mat-icon>
+                            </button>
+                        </ng-template>
+                        <button mat-icon-button [matMenuTriggerFor]="vertimenu" matTooltip="more" class="remind">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <div class="closecls">
+                            <button mat-button class="close" id="closeB"
+                                (click)="createNote(title.value,description.value)">
+                                close
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+
+        <div fxLayout="row" class="palette">
+            <mat-menu #Colors="matMenu" [overlapTrigger]="false">
+                <ng-template matMenuContent>
+                    <div>
+                        <div fxLayout="row" fxLayoutGap="10px" style="margin-top: 1px"
+                            *ngFor="let colors of listOfColors">
+                            <div *ngFor="let color of colors" id="rgb">
+                                <button [ngStyle]="{'background-color': color.color}" (click)="setColor(color.color)"
+                                    matTooltip="{{ color.name }}" mat-mini-fab></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </mat-menu>
+        </div>
+        <mat-menu #remind="matMenu" (click)="$event.stopPropagation();">
+            <mat-card class="size">
+                <div fxLayout="row">
+                    <mat-icon matTooltip="Go back" mat-dialog-close>arrow_back</mat-icon>
+                    Pick date & time
+                </div>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="date" value="matDatepicker" #picdate>
+                    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                    <mat-datepicker #date></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="color" (click)="$event.stopPropagation();">
+                    <mat-label>10:00 AM</mat-label>
+                    <mat-select>
+                        <mat-option value="8:00 AM" (click)="setTime(a.value)" #a>Morning 8:00 AM</mat-option>
+                        <mat-option value="1:00 PM" (click)="setTime(b.value)" #b id="aftr">Afternoon 1:00 PM
+                        </mat-option>
+                        <mat-option value="6:00 PM" (click)="setTime(c.value)" #c>Evening 6:00 PM</mat-option>
+                        <mat-option value="8:00 PM" (click)="setTime(d.value)" #d>Night 8:00 PM</mat-option>
+                        <mat-option value="10:00 AM" (click)="setTime(e.value)" #e>Custom</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="color" (click)="$event.stopPropagation();">
+                    <mat-label>Repeat</mat-label>
+                    <mat-select>
+                        <mat-option value="not" (click)="setRepitation(f.value)" #f>Does not repeat</mat-option>
+                        <mat-option value="daily" (click)="setRepitation(g.value)" #g>Daily</mat-option>
+                        <mat-option value="weekly" (click)="setRepitation(h.value)" #h>Weekly</mat-option>
+                        <mat-option value="monthly" (click)="setRepitation(i.value)" #i>Monthly</mat-option>
+                        <mat-option value="yearly" (click)="setRepitation(j.value)" #j>Yearly</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button (click)="save(picdate.value)" id="saveOp">Save</button>
+            </mat-card>
+        </mat-menu>
+        <mat-menu #vertimenu="matMenu">
+            <!-- <mat-card (click)="$event.stopPropagation();">
+                Label Note
+                <input matInput class="inputs" placeholder="new Label" value="" #newLabelName> <br>
+                <mat-divider class="divider"></mat-divider>
+                <button mat-button (click)="addLabels(newLabelName.value)">+ Create {{newLabelName.value}}</button>
+            </mat-card> -->
+            <!-- <button mat-raised-button >Add drawings</button>
+            <button mat-raised-button >Show checkboxes</button> -->
+            <button mat-menu-item >Add drwaings</button>
+            <button mat-menu-item  >Show Checkboxes</button>
+        </mat-menu>
+    </div>
