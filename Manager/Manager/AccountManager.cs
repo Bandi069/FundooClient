@@ -1,6 +1,7 @@
 ﻿
 namespace Manager.Manager
 {
+    using Microsoft.AspNetCore.Http;
     using Model.UserModel;
     using Repository.IRepository;
     using System.Threading.Tasks;
@@ -92,6 +93,10 @@ namespace Manager.Manager
         public async Task<string> ResetPassword(ResetPassword reset)
         {
            return await this.repository.ResetPassword(reset);
+        }
+        public string ProfilePicture(string email, IFormFile image)
+        {
+            return this.repository.ProfilePicture(email, image);
         }
     }
 }

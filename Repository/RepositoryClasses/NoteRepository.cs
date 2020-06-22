@@ -13,7 +13,7 @@ namespace Repository.RepositoryClasses
     using System.Threading.Tasks;
 
     /// <summary>
-    /// NoteRepository class is used to implement INoteRepository
+    /// NoteRepository class 
     /// </summary>
     public class NoteRepository : INoteRepository
     {
@@ -52,7 +52,7 @@ namespace Repository.RepositoryClasses
             {
                 this.context.Notes.Add(noteModel);
                 await this.context.SaveChangesAsync();
-                return "Added SuccessFully";
+                return "Note created";
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Repository.RepositoryClasses
                 context.Notes.Remove(notes);
                 context.SaveChanges();
                 await this.context.SaveChangesAsync();
-                return "Deleted Successfully";
+                return "Note deleted";
             }
             else
             {
@@ -124,7 +124,7 @@ namespace Repository.RepositoryClasses
                 notes.ModifiedDate = notes.Date;
                 note.ChangeColor = note.ChangeColor;
                 await this.context.SaveChangesAsync();
-                return "updated successfully";
+                return "Note updated";
             }
             else
                 return default;
@@ -142,7 +142,7 @@ namespace Repository.RepositoryClasses
             {
                 result.Trash = true;
                 await context.SaveChangesAsync();
-                return "moved to trash";
+                return "Note trashed";
             }
             return null;
         }
@@ -161,7 +161,7 @@ namespace Repository.RepositoryClasses
                     this.context.Notes.Remove(note);
                 }
                 var res = await this.context.SaveChangesAsync();
-                return "trash removed"; ;
+                return "Trash removed"; ;
             }
             return default;
         }
@@ -192,10 +192,6 @@ namespace Repository.RepositoryClasses
             }
         }
 
-        /// <summary>
-        /// Trash List method is used get all notes that are sent to trash
-        /// </summary>
-        /// <returns></returns>
         public List<NoteModel> TrashList()
         {
             try
@@ -225,7 +221,7 @@ namespace Repository.RepositoryClasses
             {
                 result.Trash = false;
                 await this.context.SaveChangesAsync();
-                return "restored successfully";
+                return "Note restored ";
             }
             return null;
         }
@@ -244,7 +240,7 @@ namespace Repository.RepositoryClasses
                     note.Trash = false;
                 }
                 Task.Run(() => this.context.SaveChanges());
-                return "restored successfully";
+                return "Notes restored ";
             }
             return null;
         }
@@ -261,13 +257,13 @@ namespace Repository.RepositoryClasses
             {
                 result.Archive = true;
                 await this.context.SaveChangesAsync();
-                return "archived";
+                return "Note archived";
             }
             return null;
         }
 
         /// <summary>
-        /// UnArchive method is used to retrieve the note from Archive list 
+        /// Unarchive method 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -278,7 +274,7 @@ namespace Repository.RepositoryClasses
             {
                 result.Archive = false;
                 await this.context.SaveChangesAsync();
-                return "unArchived";
+                return "Note unarchived";
             }
             return null;
         }
@@ -309,13 +305,13 @@ namespace Repository.RepositoryClasses
             {
                 result.Pin = true;
                 await this.context.SaveChangesAsync();
-                return "pinned";
+                return "Note pinned";
             }
             return null;
         }
 
         /// <summary>
-        /// Unpin method is used to un pin the note
+        /// Unpin method 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -326,7 +322,7 @@ namespace Repository.RepositoryClasses
             {
                 result.Pin = false;
                 await this.context.SaveChangesAsync();
-                return "unpinned";
+                return "Note unpinned";
             }
             return null;
         }
@@ -388,7 +384,7 @@ namespace Repository.RepositoryClasses
                     result.ChangeColor = color;
                     this.context.Notes.Update(result);
                     await this.context.SaveChangesAsync();
-                    return "color changed";
+                    return "Note color changed";
                 }
                 else
                 {
@@ -418,20 +414,17 @@ namespace Repository.RepositoryClasses
         /// <returns></returns>
         public async Task<string> UploadImage(IFormFile file, int id)
         {
-            /*if (file == null)
-            {
-                return "Empty";
-            }*/
+            
             var stream = file.OpenReadStream();
             var name = file.FileName;
-            CloudinaryDotNet.Account account = new CloudinaryDotNet.Account("dmdp5jjui", "523844292256353", "U1vXZvATQzEk37sZ8QL_43eat4c");
+            Account account = new Account("dmdp5jjui","523844292256353", "U1vXZvATQzEk37sZ8QL_43eat4c");
             Cloudinary cloudinary = new Cloudinary(account);
             var uploadParams = new ImageUploadParams()
             {
                 File = new FileDescription(name, stream)
             };
             ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
-            cloudinary.Api.UrlImgUp.BuildUrl(String.Format("{0}.{1}", uploadResult.PublicId, uploadResult.Format));
+            //cloudinary.Api.UrlImgUp.BuildUrl(String.Format("{0}.{1}", uploadResult.PublicId, uploadResult.Format));
             var data = this.context.Notes.Where(t => t.Id == id).SingleOrDefault();
             data.AddImage = uploadResult.Uri.ToString();
             try

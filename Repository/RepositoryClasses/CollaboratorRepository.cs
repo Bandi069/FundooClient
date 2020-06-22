@@ -43,14 +43,13 @@ namespace Repository.RepositoryClasses
                 bool result = this.context.Notes.Any(option => option.Email == collaborator.SenderEmail && option.Id == collaborator.NoteId);
                 if (result)
                 {
-                        var addCollaborator = new Collaborator()
-                        {
-                            NoteId = collaborator.NoteId,
-                            SenderEmail = collaborator.SenderEmail,
-                            ReceiverEmail = collaborator.ReceiverEmail
-                        };
-                        context.Collaborators.Add(collaborator);
-                    
+                    var addCollaborator = new Collaborator()
+                    {
+                        NoteId = collaborator.NoteId,
+                        SenderEmail = collaborator.SenderEmail,
+                        ReceiverEmail = collaborator.ReceiverEmail
+                    };
+                    context.Collaborators.Add(collaborator);
                 }
                 await this.context.SaveChangesAsync();
                 return "Added Successfully";

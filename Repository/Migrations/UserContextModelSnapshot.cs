@@ -97,6 +97,8 @@ namespace Repository.Migrations
 
                     b.Property<string>("Password");
 
+                    b.Property<string>("ProfilePicture");
+
                     b.HasKey("Email");
 
                     b.ToTable("Accountregister");

@@ -10,8 +10,8 @@ using Repository.Context;
 namespace Repository.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20200603103029_fundooa")]
-    partial class fundooa
+    [Migration("20200609100313_funyar")]
+    partial class funyar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,6 +98,8 @@ namespace Repository.Migrations
                     b.Property<string>("LastName");
 
                     b.Property<string>("Password");
+
+                    b.Property<string>("ProfilePicture");
 
                     b.HasKey("Email");
 

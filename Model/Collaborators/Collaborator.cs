@@ -46,11 +46,10 @@ namespace Model.Collaborators
         public string ReceiverEmail { get => this.receiverEmail; set => this.receiverEmail = value; }
 
         /// <summary>
-        /// Id property is considered as primary key
+        /// Id 
         /// </summary>
         [Key]
         public int Id { get => this.id; set => this.id = value; }
 
-        //public int ColId { get => this.colId; set => this.colId = value; }
     }
 }

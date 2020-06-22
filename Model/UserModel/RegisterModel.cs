@@ -28,7 +28,7 @@ namespace Model.UserModel
         /// The password
         /// </summary>
         private string password;
-
+        private string profilePicture;
 
         /// <summary>
         /// Gets or sets the first name.
@@ -62,5 +62,6 @@ namespace Model.UserModel
         /// The password.
         /// </value>
         public string Password { get => this.password; set => this.password = value; }
+        public string ProfilePicture { get => profilePicture; set => profilePicture = value; }
     }
 }

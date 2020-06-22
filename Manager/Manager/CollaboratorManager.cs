@@ -39,7 +39,7 @@ namespace Manager.Manager
         {
             try
             {
-                 var result=await this.collaborator.AddCollaboratorToNotes(collaborator);
+              var result=  await this.collaborator.AddCollaboratorToNotes(collaborator);
                 return result;
             }
             catch(Exception exception)

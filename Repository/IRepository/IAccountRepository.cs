@@ -1,6 +1,7 @@
 ﻿
 namespace Repository.IRepository
 {
+    using Microsoft.AspNetCore.Http;
     using Model.UserModel;
     using System.Threading.Tasks;
 
@@ -50,5 +51,6 @@ namespace Repository.IRepository
         /// <param name="login">The login.</param>
         /// <returns></returns>
         Task<string> FaceBookLogin(LoginModel login);
+        string ProfilePicture(string email, IFormFile image);
     }
 }

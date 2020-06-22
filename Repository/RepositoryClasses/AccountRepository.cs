@@ -1,9 +1,12 @@
 ﻿
 namespace Repository.RepositoryClasses
 {
+    using CloudinaryDotNet;
+    using CloudinaryDotNet.Actions;
     using Experimental.System.Messaging;
     using global::Repository.Context;
     using global::Repository.IRepository;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.IdentityModel.Tokens;
     using Model.UserModel;
@@ -233,6 +236,30 @@ namespace Repository.RepositoryClasses
                 return "success";
             }
             return null;
+        }
+        public string ProfilePicture(string email, IFormFile image)
+        {
+            try
+            {
+                var result = image.OpenReadStream();
+                var name = image.FileName;
+                Account account = new Account("dmdp5jjui", "523844292256353", "U1vXZvATQzEk37sZ8QL_43eat4c");
+                Cloudinary cloudinary = new Cloudinary(account);
+                var UploadFile = new ImageUploadParams()
+                {
+                    File = new FileDescription(name, result)
+                };
+                var uploadResult = cloudinary.Upload(UploadFile);
+
+                var data = this.userContext.Accountregister.Where(Op => Op.Email == email).SingleOrDefault();
+                data.ProfilePicture = uploadResult.Uri.ToString();
+                this.userContext.SaveChanges();
+                return data.ProfilePicture;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
         }
     }
 

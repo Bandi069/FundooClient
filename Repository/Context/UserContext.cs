@@ -19,8 +19,7 @@ namespace Repository.Context
         /// </summary>
         /// <param name="contextOptions">The context options.</param>
         public UserContext(DbContextOptions<UserContext> contextOptions) : base(contextOptions)
-        {
-                
+        {     
         }
         public DbSet<RegisterModel> Accountregister { get; set; }
          

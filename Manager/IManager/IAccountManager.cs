@@ -1,6 +1,7 @@
 ﻿
 namespace Manager.IManager
 {
+    using Microsoft.AspNetCore.Http;
     using Model.UserModel;
     using System.Threading.Tasks;
 
@@ -50,5 +51,6 @@ namespace Manager.IManager
         /// <param name="loginModel">The login model.</param>
         /// <returns></returns>
         Task<string> FaceBookLogin(LoginModel loginModel);
+        string ProfilePicture(string email, IFormFile image);
     }
 }

@@ -1,11 +1,7 @@
-﻿
+﻿using System;
+
 namespace Model.NoteModel
 {
-    using System;
-
-    /// <summary>
-    /// NoteModel class is used as Model class for Notes
-    /// </summary>
     public class NoteModel
     {
         /// <summary>

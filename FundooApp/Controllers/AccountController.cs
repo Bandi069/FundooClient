@@ -2,6 +2,7 @@
 namespace FundooApp.Controllers
 {
     using Manager.IManager;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Model.UserModel;
     using System;
@@ -155,6 +156,20 @@ namespace FundooApp.Controllers
             catch (Exception exception)
             {
                 return BadRequest(exception.Message);
+            }
+        }
+        [HttpPut]
+        [Route("profilePic")]
+        public ActionResult ProfilePicture(string email, IFormFile image)
+        {
+            var result = this.accountManager.ProfilePicture(email, image);
+            if (result != null)
+            {
+                return this.Ok(new { result });
+            }
+            else
+            {
+                return this.BadRequest();
             }
         }
     }
