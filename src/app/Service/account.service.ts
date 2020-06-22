@@ -21,4 +21,8 @@ export class AccountService {
   resetform(value) {
     return this.http.put(environment.Url + 'reset', value);
   }
+  profilepic(img)
+  {
+    return this.http.put(environment.Url +'profilePic',img);
+  }
 }

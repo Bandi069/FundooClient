@@ -29,11 +29,11 @@ export class ResetPasswordComponent implements OnInit {
       };
       this.service.resetform(data).subscribe(Response => {
         console.log('response', Response);
-        this.snackBar.open('Password Reset Successfull', '', { duration: 4000 });
+        this.snackBar.open('Password Reset Successfull', '', { duration: 4000, horizontalPosition: 'start' });
         token: localStorage.setItem('token', Response.toLocaleString());
       });
     }
     else
-      this.snackBar.open('Incorrect Password', '', { duration: 4000 });
+      this.snackBar.open('Incorrect Password', '', { duration: 4000 , horizontalPosition: 'start'});
   }
 }

@@ -1,51 +1,59 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NoteServicesService } from 'src/app/Service/note-services.service';
-
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { Note } from 'src/app/models/notes.model';
+import { AccountService } from 'src/app/Service/account.service';
 @Component({
   selector: 'app-profile-pic',
   templateUrl: './profile-pic.component.html',
   styleUrls: ['./profile-pic.component.scss']
 })
 export class ProfilePicComponent implements OnInit {
-  picLink : any;
+
+  value: boolean = false;
   imageChangedEvent: any = '';
- flag : boolean = false;
-croppedImage: any = '';
-  constructor(private noteserviceobj:NoteServicesService,
-    private snackbar:MatSnackBar,
+  croppedImage: any = '';
+  //id:any='';
+  @Input() notes: Note = new Note();
+  //ImageCroppedEvent:any = '';
+  
+  constructor(private noteserviceobj: NoteServicesService,
+    private accountserv: AccountService,
+    private snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ProfilePicComponent>) { }
 
   ngOnInit() {
   }
-  onSelectedFile(event) {
-    this.imageChangedEvent = event;
-    }
-    // imageCropped(event: imageCroppedEvent) {
-    // this.croppedImage = event.file;
-    // }
-
-    changeFlag(){
-      this.flag = true;
-    }
+  //debugger;
+  fileChangeEvent(event: any): void {
     debugger;
-    addImage(croppedImage){
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    debugger;
+    this.croppedImage = event.base64;
+  }
+  selectFiles($event) {
+    debugger;
+    this.imageChangedEvent = $event;
+  }
+  changevalue() {
+    this.value = true;
+  }
+  addImage(croppedImage) {
+    debugger;
+    console.log("Profile picture", croppedImage); debugger;
+    // this.noteserviceobj.uploadImage(this.notes.id, croppedImage).subscribe(response => {
+      this.accountserv.profilepic(croppedImage).subscribe(response => {
       debugger;
-      console.log("Cropped image: ",croppedImage);
-     this.noteserviceobj.uploadImage(croppedImage, 'image-upload').subscribe(
-       data => {
-          this.picLink = data['imgUrl'];
-         this.data.updateProfilePic(this.picLink);
-       },
-       error => {
+      console.log(response);
+    },
+      error => {
         debugger;
-         this.snackbar.open("Error in uploading profile pic","",{duration: 2000,horizontalPosition:'start'});
-       }
-     )
-
-   }
-  
-
+        this.snackbar.open("Profile pic update failed", "", { duration: 2000, horizontalPosition: 'start' });
+      })
+  }
 }

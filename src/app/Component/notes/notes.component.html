@@ -35,6 +35,9 @@
         </div>
     </div>
     <mat-card-footer>
-        <app-icons [notes]="note" (output)="getOutput($event)" class="icons"></app-icons>
+        <app-icons [notes]="note" [collabo]="collaborator" (output)="getOutput($event)" [labels]="labels" class="icons"></app-icons>
+        <!-- <app-display [collaborator]="listofCollab"></app-display>    -->
     </mat-card-footer>
+
+    <!-- <app-icons  [colla]="collaborator" (output)="getAllNote()" class="icons"></app-icons> -->
 </mat-card>

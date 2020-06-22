@@ -43,7 +43,8 @@ export class CreateNoteComponent implements OnInit {
       this.notes.description = description;
       this.notes.changeColor = this.noteColor;
       this.notes.pin = this.pin;
-      this.notes.archive = this.archive;
+      this.notes.email=localStorage.getItem('Email');
+         this.notes.archive = this.archive;
       this.notes.reminder = this.reminder;
       this.noteService.createNoteService(this.notes).subscribe((result) => {
         console.log(result);
@@ -97,22 +98,23 @@ export class CreateNoteComponent implements OnInit {
 
   listOfColors = [
     [
-      { color: "rgb(255,255,255)", name: "Default color" },
-      { color: "rgb(137,207,240)", name: "blue" },
-      { color: "rgb(75,0,130)", name: "indigo" },
-      { color: "rgb(167,252,0)", name: "green" }
+      { color: "rgb(255,255,255)", name: "Default" },
+      { color: "#f28b82", name: "Red" },
+      { color: "#fbbc04", name: "Orange" },
+       { color: "#fff475", name: "Yellow" },
+     
     ],
     [
-      { color: "rgb(229,43,80)", name: "red" },
-      { color: "rgb(0,198,128)", name: "teal" },
-      { color: "rgb(255,215,0)", name: "yellow" },
-      { color: "rgb(181,126,220)", name: "violet" }
+      { color: "#ccff90", name: "Green" },  
+      { color: "#a7ffeb", name: "Teal" },
+      { color: "#cbf0f8", name: "Blue" },
+      { color: "#aecbfa", name: "Dark blue" }
     ],
     [
-      { color: "rgb(0,255,255)", name: "cyan" },
-      { color: "rgb(253,108,158)", name: "pink" },
-      { color: "rgb(150,75,0)", name: "brown" },
-      { color: "rgb(128,128,128)", name: "gray" }
+      { color: "#d7aefb", name: "Purple" },
+      { color: "#fdcfe8", name: "Pink" },
+      { color: "#e6c9a8", name: "Brown" },
+      { color: "#e8eaed", name: "Gray" }
     ]
   ]
   isPin()

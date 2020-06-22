@@ -6,6 +6,9 @@
   .registration-full-width {
     width: 100%;
   }
+  .funtitle{
+    margin-left: 233px;
+  }
   h1{
       color: darkslategray;
       padding-top: 2%;
@@ -18,17 +21,19 @@
     margin: auto;
     align-items: center;
     width: 45%;
-    height: 77%;
+    height: 80%;
     align-content: center;
     background-color: whitesmoke;
     box-shadow: 5px 4px 7px rgba(141, 124, 124, 0.3)
   }
   .subtitle
   {
-      color: darkslategray;
+      color:blue;
       align-items: center;
       align-content: center;
       align-self: center;
+      margin-left: 160px;
+
   }
   .facebook {
     background-color: blue;
@@ -58,7 +63,7 @@
     margin: auto;
   }
   .w-100{
-    width:80%;
+    width:100%;
   }
   .mr-10{
     margin-right: 10px;
@@ -68,4 +73,24 @@
   }
   .register_btn{
     margin-bottom: 10px;
+    margin-left: 157px;
   }
+  .noaccount{margin-left: 100px;}
+  .acc{
+   // padding: 8px;
+background-color: white;
+  }
+  .social{
+    margin-left: 125px;
+  }
+//   a {
+//     color:red;
+//     text-decoration: none;
+// }
+
+// a:hover 
+// {
+//      color:#00A0C6; 
+//      text-decoration:none; 
+//      cursor:pointer;  
+// }

@@ -18,7 +18,13 @@
             </button>
             <input class="searchinput" type="text" name="search" #val autocomplete="off" placeholder="Search"
               (keyup.enter)="search(val.value)" #val>
+
           </mat-card>
+          <!-- <div class="refresh">
+            <button id="refreshbutton" mat-icon-button>
+                <mat-icon>refresh</mat-icon>
+            </button>
+          </div> -->
         </div>
         <div class="listgrid" fxLayout="row">
           <div>
@@ -30,32 +36,46 @@
             </button>
           </div>
         </div>
-        <div>
-          <img class="picture propic" alt="ProfilePicture" *ngIf="!profilePic" matTooltip="{{firstName}} {{email}}" src="/assets/Fundoo-images/user.svg"
-            [matMenuTriggerFor]="menu">
-          <img class="picture" alt="ProfilePicture" *ngIf="profilePic" src="{{profilePicture}}"
-            [matMenuTriggerFor]="menu">
+
+        <div class="profilepicturdiv">
+          <img class="picture propic" alt="ProfilePicture"   matTooltip="Bandi Venu {{email}}"
+            src="../../../assets/download.jpg" [matMenuTriggerFor]="menu">
+          <!-- <img class="picture" alt="ProfilePicture" *ngIf="profilePic" src="{{profilePicture}}"
+            [matMenuTriggerFor]="menu"> -->
         </div>
         <mat-menu #menu="matMenu" (click)="$event.stopPropagation();">
-          <div class="photo" (click)="$event.stopPropagation();">
-            <img class="pic" alt="Profile Picture" *ngIf="!profilePic" matTooltip="Profile" src="/assets/Fundoo-images/user.svg">
-            <img class="pic" alt="Profile Picture" *ngIf="profilePic" src="{{profilePicture}}">
-          </div>
-          <div class="changePic">
-            <!-- <mat-icon mat-icon-button (click)="ChangeProfile()" class="photoedit">photo_camera</mat-icon> -->
-            <button mat-raised-button (click)="ChangeProfile()" class="photoedit cameraimg"><img src="../../../assets/camera_alt-24px.svg"></button>
+          <div class="totaldivsignout">
+            <div class="logoutdiv">
+              <div class="photo" (click)="$event.stopPropagation();">
+                <img class="pic" alt="Profile Picture"  matTooltip="Profile"
+                  src="../../../assets/download.jpg">
+              </div>
+              <div class="changePic photopic">
+                <a mat-raised-button (click)="ChangeProfile()" class="photoedit cameraimg"><img
+                    src="../../../assets/camera_alt-24px.svg"></a>
+                  </div>
+            </div>
+            <div class="username">
+              <!-- <div class="usernamediv">{{account.firstName}}{{lastName}}</div>
+              <div class="usermail">{{account.email}}</div> -->
+              <div class="usernamediv">Bandi Venu</div>
+              <!-- <div class="usermail">bandivenu89@gmail.com</div> -->
+              <div class="usermail">{{email}}</div>
+            </div>
           </div>
           <mat-divider></mat-divider>
           <div class="addpersondiv">
             <button mat-button class="add">
               <div class="collab">
-                <a class="addperson">
+                <div class="addact">
                   <mat-icon class="addicon">person_add</mat-icon>
-                  <span class="addAcount">Add Account</span>
-                </a>
+                  <div class="addAcount">Add another account</div>
+                </div>
               </div>
             </button>
           </div>
+          <mat-divider></mat-divider>
+
           <div class="signoutclass">
             <button mat-button class="signout" (click)="logout()">Sign Out</button>
           </div>
@@ -69,28 +89,36 @@
     <mat-drawer #drawer class="example-sidenav" mode="side" opened>
       <mat-nav-list class="list">
         <a mat-list-item class="notes" (click)="notes()">
-          <mat-icon>emoji_objects</mat-icon>Notes
-        </a> <br>
+          <!-- <mat-icon>emoji_objects</mat-icon> -->
+          <img class="bulb" src="../../../assets/lightbulb.png">
+          Notes
+        </a>
         <a mat-list-item class="notes" (click)="reminder()">
-          <mat-icon>notifications</mat-icon>Reminders
-        </a><br>
+          <!-- <mat-icon>notifications</mat-icon> -->
+          <img class="bulb" src="../../../assets/notifications_none-24px.svg">Reminders
+        </a>
         <div *ngFor="let lab of allLabels">
           <a mat-list-item matTooltip={{lab.labelName}} (click)="labelOperation(lab.labelName)">
             <mat-icon>label_outline</mat-icon><a class="margin">{{lab.labelName}}</a>
-          </a> <br>
+          </a> 
         </div>
         <div>
           <a mat-list-item class="notes" (click)="openDialog(allLabels)">
-            <mat-icon>create</mat-icon>Edit Labels
+            <!-- <mat-icon>create</mat-icon> -->
+            <img class="bulb" src="../../../assets/create-24px.svg">
+          Edit Labels
           </a>
         </div>
-        <br>
+       
         <a mat-list-item class="notes" (click)="archive()">
-          <mat-icon>archive</mat-icon>Archive
-        </a> <br>
+          <!-- <mat-icon>archive</mat-icon> -->
+          <img class="bulb" src="../../../assets/archive-24px (1).svg">
+          Archive
+        </a>
         <a mat-list-item class="notes" (click)="trash()">
-          <mat-icon>delete</mat-icon>Trash
-        </a> <br>
+          <!-- <mat-icon>delete</mat-icon> -->
+          <img class="bulb" src="../../../assets/delete-24px (1).svg">Trash
+        </a> 
       </mat-nav-list>
     </mat-drawer>
     <div>

@@ -16,7 +16,7 @@
 
         <div fxLayout="row" style="padding-top: 32px;" class="icon">
             <div>
-                <app-icons [notes]="data.note" (output)="outputFunction($event)"></app-icons>
+                <app-icons [notes]="data.note" [labels]="labels" [collabo]="collaborator" (output)="outputFunction($event)"></app-icons>
             </div>
             <button mat-button mat-dialog-close (click)="updateNote(title.value, description.value, data.note.id)"
                 id="update">Close</button>

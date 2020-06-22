@@ -16,11 +16,12 @@ export class CollaboratorService {
   {
     return this.http.post(environment.Url+'addColloborator',col,this.header);
   }
-   deleteCollaborator(del)
+   deleteCollaborator(coldelete)
    {
-     return this.http.put(environment.Url+'deleteCollaborator?id='+del,null,this.header);
+     return this.http.put(environment.Url+'deleteCollaborator?id='+coldelete,null,this.header);
    }
-   getcollabs(coll){
-     return this.http.get(environment.Url+'getAllCollaborators'+coll,this.header);
+   getcollabs(){
+     return this.http.get(environment.Url+'getAllCollaborators',this.header);
    }
+  
 }

@@ -12,7 +12,7 @@
     width: 700px;
     // margin-left: 37px;
     // margin-top: 10px;
-    height: 200px;
+    height: 275px;
     padding: 15px 15px 0;
 }
 .collabdiv {
@@ -27,6 +27,13 @@
     // height: 250px;
     //width: 500px;
 }
+.divlines{
+//   //  padding: 0px;
+//     display: inherit;
+//     width: 100%;
+margin-top: 6px;
+}
+
 .placehold {
     display: inline-flex;
 }
@@ -45,13 +52,57 @@
     //min-height: 150px;
     overflow-y: auto;
 }
+.ownerimg{
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+}
 .divclass {
     overflow-x: hidden;
     overflow-y: auto;
     padding: 10px 0;
+    display: contents;
+}
+.userimage{
+    border: 2px solid #fff;
+       box-sizing: border-box;
+       box-shadow: 0 1px 1px 1px rgba(60,64,67,0.149);
+       border-radius: 50%;
+       height: 40px;
+       width: 40px;
+       overflow: hidden;
+}
+.userimagec{
+    height: 40px;
+    width: 40px;
+}
+.closeicon{
+    background-size: 18px 18px;
+    border-radius: 50%;
+   // border: 1px solid transparent;
+    height: 20px;
+   // opacity: .54;
+    width: 20px;
+       // margin-left: 510px;
+}
+.closeiconbutton{
+    margin-left: 450px;
+}
+.receviermaildiv{
+    font-weight:700;
+    font-size: 13px;
+    display:inline-flex;
+}
+.recmailspan{
+    margin-top: 13px;
+    margin-left: 3px;
 }
 .names {
     font-weight: 700;
+    font-size: 15px;
 }
 .addperson {
     background-size: 18px 24px;
@@ -62,11 +113,13 @@
 .owner {
     font-style: italic;
     margin-left: 5px;
+    font-size: 13px;
 }
 .usermail {
     color: #5f6368;
     direction: ltr;
     font-family: "Roboto", arial, sans-serif;
+    font-size: 13px;
 }
 .newcollab {
     flex: 1 0 auto;
@@ -81,20 +134,40 @@
     height: 25px;
     padding: 0;
 }
+.profilepicturdiv{
+    flex: 0 1 auto;
+}
 .inlinediv {
     position: relative;
     align-items: center;
-    // display: flex;
+    // display: flex;profilepicturdiv
     padding: 5px;
     display: inline-flex;
+    width: 100%;
+    bottom: -5px;
+    margin-left: 5px;
+    
+}
+.addsavebutton{
+    margin-left: 156px;
+    height: 24px;
+    opacity: .54;
+    width: 24px;
+    border-radius:50%;
+}
+.addsavebutton:hover{
+    opacity: .87;
+    background-color: rgba(95,99,104,0.157);
+
 }
 .cancelsave {
     background-color: rgba(0, 0, 0, 0.07);
     justify-content: flex-end;
     padding: 4px 10px;
     border-radius: 5px;
- //   margin-top: 5%;
-    margin-top: 125px;
+    margin-top: 200px;
+    margin-right: 15px;
+ 
 }
 .cancel {
     box-sizing: border-box;
@@ -103,7 +176,6 @@
     font-family: "Google Sans", Roboto, Arial, sans-serif;
     font-weight: 500;
     height: 36px;
-    //padding: 8px 24px;
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;

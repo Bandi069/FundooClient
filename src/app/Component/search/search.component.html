@@ -1,3 +1,13 @@
-<div class="searchCards">
-    <app-display [Search]="Search"> </app-display>
- </div> 
+<!-- <div class="searchCards">
+    <app-notes [Search]="Search"> </app-notes>
+ </div>  -->
+ <div class="row" >
+    <div *ngFor="let one of searchdata">
+        <div>
+            <app-notes [note]="one" *ngIf="gridView=='row'" class="rowcls"></app-notes>
+             <div class="columncls">
+                <app-notes [note]="one" *ngIf="gridView=='column'"></app-notes>
+            </div> 
+        </div>
+    </div>
+</div>

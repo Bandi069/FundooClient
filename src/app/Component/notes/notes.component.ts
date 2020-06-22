@@ -4,6 +4,8 @@ import { NoteServicesService } from 'src/app/Service/note-services.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { Collaborator } from 'src/app/models/collaborator.model';
+import { CollaboratorService } from 'src/app/Service/collaborator.service';
 
 @Component({
   selector: 'app-notes',
@@ -12,33 +14,35 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 })
 export class NotesComponent implements OnInit {
 
-  @Input() note:any;
-  @Input() labels:any;
+  @Input() note: any;
+  @Input() labels: any;
   @Input() notes: Note = new Note();
-  text:Note =new Note();
+  text: Note = new Note();
+  @Input() collaborator: any;
+  colla: Collaborator = new Collaborator();
+  listofCollab: any = [];
   @Output() output: EventEmitter<any> = new EventEmitter();
-    constructor(private noteService :NoteServicesService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
+  constructor(private noteService: NoteServicesService,
+    private collaboratorservice: CollaboratorService,
+    private snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  getOutput(value)
-  {
+  getOutput(value) {
     this.output.emit('ok');
+    this.getAllCollaborator();
   }
-  deleteLabel(id)
-  {
-    this.noteService.deleteLabel(id).subscribe((result)=>
-    {
+  deleteLabel(id) {
+    this.noteService.deleteLabel(id).subscribe((result) => {
       this.output.emit('done');
-      console.log('result',result);
-      this.snackBar.open('Label deleted','',{duration : 2000,horizontalPosition:'start'});
+      console.log('result', result);
+      this.snackBar.open('Label deleted', '', { duration: 2000, horizontalPosition: 'start' });
     },
-    (error)=>
-    {
-      this.output.emit('error');
-      console.log('error',error);
-    });
+      (error) => {
+        this.output.emit('error');
+        console.log('error', error);
+      });
   }
   OnClicktoUpdate(note) {
     if (note.istrash != true) {
@@ -49,7 +53,7 @@ export class NotesComponent implements OnInit {
         panelClass: 'custom-dialog-container',
       });
       dialogRef.afterClosed().subscribe(result => {
-        if(result.updateData){
+        if (result.updateData) {
           this.noteService.updateNote(result.updateData).subscribe(response => {
             this.output.emit("ok");
           });
@@ -64,21 +68,26 @@ export class NotesComponent implements OnInit {
     }
   }
 
-  
+
   deleteReminder(id) {
     // this.text.id = id;
     console.log(id);
-    this.noteService.removeReminder(id).subscribe((result )=> {
-      console.log('result',result);
-      this.snackBar.open('Reminder Deleted','',{duration:3000,horizontalPosition: 'start'});
+    this.noteService.removeReminder(id).subscribe((result) => {
+      console.log('result', result);
+      this.snackBar.open('Reminder Deleted', '', { duration: 3000, horizontalPosition: 'start' });
       this.output.emit('done');
     },
-    (error)=>
-    {
-      this.output.emit('done');
-      console.log('error',error);
-    }
+      (error) => {
+        this.output.emit('done');
+        console.log('error', error);
+      }
     );
   }
-  
-}
+  getAllCollaborator() {
+    this.collaboratorservice.getcollabs().subscribe(
+      listofCollab => {
+        this.listofCollab = listofCollab;
+        console.log(this.listofCollab);
+      });
+  }
+  }

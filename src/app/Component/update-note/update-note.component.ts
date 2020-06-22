@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Note } from 'src/app/models/notes.model';
 
@@ -8,7 +8,8 @@ import { Note } from 'src/app/models/notes.model';
   styleUrls: ['./update-note.component.scss']
 })
 export class UpdateNoteComponent implements OnInit {
-
+  @Input() labels:any;
+  @Input() collaborator:any;
   @Output() output: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<UpdateNoteComponent>) { }
@@ -20,6 +21,7 @@ export class UpdateNoteComponent implements OnInit {
     this.note.id = noteId;
     this.note.description = description;
     this.note.title = title;
+    this.note.email=localStorage.getItem('Email');
     this.dialogRef.close({ updateData: this.note });
   }
 

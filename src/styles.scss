@@ -17,17 +17,11 @@ padding:0px;
     overflow: hidden;
 }
 .Collaborator-Container .mat-dialog-container{
-    height: 240px;
+   // height: 280px;
+    height : 'auto';
     width: 700px;
-    // height: 250px;
-    // width: 535px;
-    // margin-top: 100px;
-    // margin-left: 600px;
+    padding: 15px 15px 0; 
     overflow: hidden;
-    // height: 276px;
-    // width: 701px;
-    // margin-top: -62px;
-    // margin-left: 295px;
 }
 //@import "~igniteui-angular/lib/core/styles/themes/index";
 // Uncomment the following lines if you want to add a custom palette:

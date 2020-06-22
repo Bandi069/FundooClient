@@ -14,11 +14,12 @@
   }
   .grid
   {
-    margin-left: 111px;
+    margin-left: 150px;
+    margin-bottom: 15px;
   }
   .colu{
   width: 50%;
-  margin-bottom: 17px;
+  margin-bottom: 30px;
   height: auto;
     margin-left: 6cm;
     min-width:50%;
@@ -50,15 +51,50 @@
     display: table;
     clear: both;
   }
-  .pinned{
+  .pinnedc{
+    font-weight: 500;
+    font-family: Roboto,Arial,sans-serif;
+    margin-left: 207px;
+  }
+  .pinnedr{
+    
+      font-weight: 500;
+      font-family: Roboto,Arial,sans-serif;
+      margin-left: -50px;
+  }
+  .pinnedcothers{
     font-weight: 500;
     font-family: Roboto,Arial,sans-serif;
   }
+  .pindiv{
+    padding-left: 200px;
+  }
+.archiveimg{
+  // height: 220px;
+  // opacity: 0.4;
+  // top: 104px;
+   margin: 110px 460px 8px;
+  background-size: 120px 120px;
+  height: 120px;
+  //margin: 20px;
+  opacity: .1;
+  width: 120px;}
   .create
   {
     width: 100%;
     margin: auto;
-  //  max-width: 500px;
+   //  max-width: 500px;
    // margin-bottom: 1cm;
     //flex-wrap: wrap;
+  }
+  .emptyarchivetext{
+    margin-left: 28%;
+   // font-size: 28px;
+    color: #80868b;
+    cursor: default;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 1.375rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.75rem;
   }

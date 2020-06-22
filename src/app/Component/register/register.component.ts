@@ -39,13 +39,15 @@ export class RegisterComponent implements OnInit {
       };
       this.service.registrationform(form).subscribe(
         (result) => {
-          this.snackBar.open('Register Successfull', 'Dismiss', { duration: 3000 });
+          this.snackBar.open('Register Successfull', 'Dismiss', { duration: 3000, horizontalPosition: 'start' });
           console.log('result :', result);
           this.route.navigate(['/login']);
-
+         localStorage.setItem('FirstName',form.firstName);
+         localStorage.setItem('LastName',form.lastName);
+      //  localStorage.setItem('FullName',form.firstName +form.lastName);
         },
         (error) => {
-          this.snackBar.open('Registration Failed', '', { duration: 4000 });
+          this.snackBar.open('Registration Failed', '', { duration: 4000, horizontalPosition: 'start' });
       });
     }
   }

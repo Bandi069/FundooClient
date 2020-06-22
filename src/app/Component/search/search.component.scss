@@ -1,3 +1,30 @@
 .searchCards{
     margin-top:40px;
 }
+.rowcls {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    margin-left: 0.5cm;
+    margin-bottom: auto;
+    height: auto;
+    margin-top: auto;
+  }
+  .row{
+    margin-top: auto;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .columncls{
+  width: 50%;
+  margin-bottom: 17px;
+  height: auto;
+    margin-left: 6cm;
+    min-width:50%;
+}

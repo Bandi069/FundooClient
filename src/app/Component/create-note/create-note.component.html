@@ -146,15 +146,15 @@
             </mat-card>
         </mat-menu>
         <mat-menu #vertimenu="matMenu">
-            <!-- <mat-card (click)="$event.stopPropagation();">
+            <mat-card (click)="$event.stopPropagation();">
                 Label Note
                 <input matInput class="inputs" placeholder="new Label" value="" #newLabelName> <br>
                 <mat-divider class="divider"></mat-divider>
-                <button mat-button (click)="addLabels(newLabelName.value)">+ Create {{newLabelName.value}}</button>
-            </mat-card> -->
-            <!-- <button mat-raised-button >Add drawings</button>
-            <button mat-raised-button >Show checkboxes</button> -->
+                <button mat-button (click)="addLabels(newLabelName.value)">Create label {{newLabelName.value}}</button>
+            </mat-card> 
+            <button mat-menu-item >Add drawings</button>
+            <button mat-menu-item >Show checkboxes</button>
             <button mat-menu-item >Add drwaings</button>
-            <button mat-menu-item  >Show Checkboxes</button>
+            <!-- <button mat-menu-item  >Show Checkboxes</button> -->
         </mat-menu>
     </div>

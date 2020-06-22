@@ -44,6 +44,9 @@ import { CollaboratorComponent } from './Component/collaborator/collaborator.com
 import { ProfilePicComponent } from './Component/profile-pic/profile-pic.component';
 import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { SearchComponent } from './Component/search/search.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { NotFoundComponent } from './Component/not-found/not-found.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import { SearchComponent } from './Component/search/search.component';
     UpdateNoteComponent,
     CollaboratorComponent,
     ProfilePicComponent,
-    SearchComponent
+    SearchComponent,
+    NotFoundComponent
 
   ],
   imports: [
@@ -95,6 +99,8 @@ import { SearchComponent } from './Component/search/search.component';
     MatDialogModule,
     HttpClientModule,
     MatSnackBarModule,
+    ImageCropperModule,
+    NgxMaterialTimepickerModule,
     RouterModule.forRoot([])
   ],
   entryComponents: [LabelComponent, UpdateNoteComponent, CollaboratorComponent,ProfilePicComponent],

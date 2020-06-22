@@ -1,73 +1,80 @@
 <mat-dialog-content class="container">
-    <!-- <mat-dialog-container class="mat-dialog-container"> -->
-    <!-- <mat-card class="card"> -->
-    <div class="collabdiv" fxFlex="100" fxLayout="column">
-        <div fxFlex="100" class="main">
-            <div class="collabname">Collaborators</div>
-            <div class="ownerdetails" fxLayout="row">
-                <div class="divclass">
-                    <div class="ownerimg">
-                        <!-- <img [src]="profilepic" class="accountpic">  -->
-                    </div>
-                    <div fxLayout="column">
-                        <div>
-                            <span class="names"> {{firstName}} {{lastName}} </span>
-                            <span class="owner">(Owner)</span>
+    <!-- <mat-card> -->
+    <div>
+        <div class="collabdiv" fxFlex="100" fxLayout="column">
+            <div fxFlex="100" class="main">
+                <div class="collabname">Collaborators</div>
+                <div class="ownerdetails" fxLayout="row">
+                    <div class="divclass">
+                        <div class="ownerimg">
+                            <!-- <img src="[{{account.profilepic}}]" class="accountpic">  -->
+                            <!--  <img *ngIf="userData.profileImage!=null" src="{{userData.profileImage}}"> -->
+                            <img src="../../../assets/download.jpg">
                         </div>
-                        <div class="usermail"> {{email}}</div>
+                        <div fxLayout="column">
+                            <div>
+                                <span class="names">Bandi Venu</span>
+                                <span class="owner">(Owner)</span>
+                            </div>
+                            <div class="usermail"> {{email}}</div>
+                        </div>
                     </div>
                 </div>
-                <div class="totalline">
-                    <div fxLayout="row">
-                        <div *ngFor="let note of collaborator" class="collabnew">
-                            <div class="del" matTooltip="{{note.email}}">
-                                <span class="email">
-                                    {{note.email}}
+                <div class="totalline divlines" fxLayout="row">
+                    <div fxLayout="column">
+                        <div *ngFor="let col of data.collaborators" class="collabnew">
+                            <!-- <div class="del" matTooltip="{{col.senderEmail}}">
+                            <span class="email">
+                                    {{col.senderEmail}}
                                 </span>
+                                </div> -->
+                                <div class="receviermaildiv" *ngIf="data.collab.noteId == col.noteId">
+
+                                    <div class="userimage"> <img class="userimagec" src="../../../assets/userimage.png">
+                                    </div>
+                                    <span class="recmailspan">{{col.receiverEmail}}</span>
+                                    <button class="closeiconbutton" mat-icon-button matTooltip="Delete"
+                                        (click)="deleteCollaborator(col.id)">
+                                        <img class="closeicon" src="../../../assets/close-24px.svg">
+                                    </button>
+                                </div>
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="inlinediv">
+                    <div class="placehold">
+                        <div fxLayout="row">
+                            <img class="addperson" src="../../../assets/Fundoo-images/person_add.svg">
+                        </div>
+                        <div class="add" fxLayout="row" fxLayoutAlign="space-between center">
+                            <input matInput type="text" class="newcollab" aria-label="Number"
+                                placeholder="Person or email to share with" value="" #userEmail>
+                            <!-- <mat-autocomplete autoActiveFirstOption>
+                                <mat-option *ngFor="let col of collabs" [value]="col">
+                                    {{col.email}}
+                                </mat-option>
+                            </mat-autocomplete> -->
+                            <div> <button class="addsavebutton" mat-button matTooltip="Add collaborator"
+                                    (click)="addCollaborator(userEmail.value,data.collab.noteId)">
+                                    <img src="../../../assets/Fundoo-images/check-24px.svg"></button>
                             </div>
                         </div>
-                        <!-- <div class="deletecollab">
-                            <button mat-button matTooltip="Delete" (click)="deletecollaborator(note)">
-                                <img src="../../../assets/images/close-24px.svg" class="deleteimage">
-                            </button>
-                        </div> -->
+                        
                     </div>
                 </div>
             </div>
-            <div class="inlinediv">
-                <div class="placehold">
-                    <div fxLayout="row">
-                        <img class="addperson" src="../../../assets/Fundoo-images/person_add.svg">
-                    </div>
-                    <div class="add" fxLayout="row" fxLayoutAlign="space-between center">
-                        <input matInput type="text" class="newcollab" aria-label="Number"
-                            placeholder="Person or email to share with" (keyup)="count = count + 1;countingcollab(count)" ><!-- [matAutocomplete]="auto"> -->
-                    </div>
-                    <div *ngIf="count > 2"  click)="addCollaborator()"> <button mat-button matTooltip="Add collaborator">
-                            <img src="../../../assets/Fundoo-images/check-24px.svg"></button>
-                    </div>
-                    <!-- <div>
-                            <img src="../../../assets/images/check-24px.svg" class="addcollab"
-                                (click)="addCollaborator()" matTooltip="Add collaborator">
-                             <mat-autocomplete autoActiveFirstOption >#auto="matAutocomplete">
-                            <mat-option *ngFor="let option of options" [value]="option">
-                                {{option.email}}
-                            </mat-option>
-                            </mat-autocomplete> 
-                        </div> -->
-                </div>
-            </div>
-        </div>
 
-        <div class="cancelsave" fxLayout="row" fxLayoutAlign="end center">
-            <div class="cancel">
-                <button  mat-dialog-closed>Cancel</button>
-            </div>
-            <div class="save">
-                <button mat-raised-button (click)="addCollaborator(get)">Save</button>
-            </div>
+        </div>
+    </div>
+    <div class="cancelsave" fxLayout="row" fxLayoutAlign="end center">
+        <div class="cancel">
+            <button mat-button mat-dialog-close>Cancel</button>
+        </div>
+        <div class="save">
+            <button mat-raised-button (click)="addCollaborator(userEmail.value,data.collab.noteId)">Save</button>
         </div>
     </div>
     <!-- </mat-card> -->
-    <!-- </mat-dialog-container> -->
 </mat-dialog-content>

@@ -4,7 +4,7 @@
             (click)="$event.stopPropagation();">
             <mat-icon>add_alert</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Collaborator" (click)="openCollabDialog(data)">
+        <button mat-icon-button matTooltip="Collaborator" (click)="openCollabDialog()">
             <mat-icon>person_add</mat-icon>
         </button>
 
@@ -26,7 +26,7 @@
             <mat-icon>more_vert</mat-icon>
         </button>
     </div>
-    <div fxLayout="row" class="icon-style icon-shadow" style="left: 397px; top: 597px;">
+    <div fxLayout="row" class="icon-style icon-shadow rowdiv" >
         <mat-menu #addColors="matMenu" [overlapTrigger]="false">
             <ng-template matMenuContent>
                 <div class="colorPalette">
@@ -55,12 +55,18 @@
             </div>
 
             <mat-form-field (click)="$event.stopPropagation();">
-                <input id="date" matInput [matDatepicker]="date" value="matDatepicker" #picdate>
+                <input id="date" matInput [matDatepicker]="date" placeholder="Choose a date" value="matDatepicker" #picdate>
                 <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
                 <mat-datepicker #date></mat-datepicker>
             </mat-form-field>
 
             <br>
+           
+            <!-- <mat-form-field>
+                <input matInput [ngxTimepicker]="pickertime" [formControl]="timer" placeholder="Choose a time">
+                <ngx-material-timepicker-toggle matSuffix (click)="$event.stopPropagation();" [for]="timePick"></ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #pickertime></ngx-material-timepicker>
+            </mat-form-field> -->
             <mat-form-field appearance="fill" class="color" (click)="$event.stopPropagation();">
                 <mat-label>8:00 AM</mat-label>
                 <mat-select id="time">
@@ -69,10 +75,7 @@
                     <mat-option value="6:00 PM" (click)="setTime(c.value)" #c>Evening 6:00 PM</mat-option>
                     <mat-option value="8:00 PM" (click)="setTime(d.value)" #d>Night 8:00 PM</mat-option>
                     <mat-option value="10:00 AM" (click)="setTime(e.value)" #e>Custom</mat-option>
-                    <!-- <input matInput [ngxTimepicker]="pickertime" placeholder="Choose a time">
-                     <ngx-datepicker-toggle matSuffix [for]="time"></mat-datepicker-toggle> 
-                    <ngx-material-timepicker-toggle matSuffix [for]="timePick"></ngx-material-timepicker-toggle>
-                    <ngx-material-timepicker #pickertime></ngx-material-timepicker> -->
+                    
                 </mat-select>
             </mat-form-field>
             <br>
@@ -93,7 +96,8 @@
     <mat-menu #moreVert="matMenu">
         <button mat-menu-item (click)="updateTrash()" id="deleteNote">Delete Note</button>
         <button mat-menu-item [matMenuTriggerFor]="addLabel" id="label">Add Label</button>
-        <button mat-menu-item  id="checkbox">Show Checkboxes</button>
+        <!-- <button mat-menu-item  id="checkbox" >Show Checkboxes</button> -->
+        <mat-checkbox  mat-menu-item   (click)="onclickcheckBox()">Checkboxes</mat-checkbox>
     </mat-menu>
 
 </div>

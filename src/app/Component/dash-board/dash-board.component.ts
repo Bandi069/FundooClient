@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LabelComponent } from '../label/label.component';
 import { NoteServicesService } from 'src/app/Service/note-services.service';
 import { ProfilePicComponent } from '../profile-pic/profile-pic.component';
+import { AccountRegister } from 'src/app/models/account.model';
 //import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-dash-board',
@@ -19,6 +20,9 @@ export class DashBoardComponent implements OnInit {
   label: Label = new Label();
   labels: any;
   userData: any = " ";
+  account :AccountRegister =new AccountRegister();
+  firstName=localStorage.getItem('FirstName'); 
+  email=localStorage.getItem('Email'); 
   constructor(private activatedRoute: ActivatedRoute, 
     private route: Router,
      public dialog: MatDialog,
@@ -98,9 +102,6 @@ export class DashBoardComponent implements OnInit {
   }
   ChangeProfile(){
     const dialogRef = this.dialog.open(ProfilePicComponent, {
-      //data: this.labels,
-      //width: '850px',
-     // height:'550px',
       panelClass: 'profilepic-container'
     });
     dialogRef.afterClosed().subscribe(result => {
